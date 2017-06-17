@@ -87,12 +87,9 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = User::findOrFail($id);
-
+        $usuario = User::find($id);
         $usuario->delete();
-
         Session::flash('flash_message', 'Usuário deletado!');
-
-        return view('home');
+        return view('register');
     }
 }
