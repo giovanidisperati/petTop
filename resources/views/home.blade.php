@@ -18,10 +18,10 @@
                         <h3>Olá, Cliente {{ Auth::user()->name }} </h3>
                         <a href="{{ url('/usuario/'.$id.'/edit')}}">Editar Cadastro</a>
                         <a href="{{ url('/buscarClinicas')}}">Buscar Clínicas</a>
-                        <form action="{{ url('UsuarioController@destroy') }}" method="POST">
-                            <input type="hidden" name="_method" value="DELETE">
-                             <a href="{{ url('/usuario/'.$id)}}">Excluir Conta</a>
-                        </form>
+                        {{ Form::open(array('url' => 'usuario/' . $id, 'class' => 'pull-right')) }}
+                            {{ Form::hidden('_method', 'DELETE') }}
+                            {{ Form::submit('Deleter conta', array('class' => 'btn btn-warning')) }}
+                        {{ Form::close() }}
                        
 
                         @elseif((Auth::user()->tipo)== 0)

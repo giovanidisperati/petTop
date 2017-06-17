@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Editar</div>
                 <div class="panel-body">
-                    <form action="/usuario/{{ $usuario->id }}" method="PUT"> 
+                    {{ Form::model($usuario, array('route' => array('usuario.update', $usuario->id), 'method' => 'PUT')) }}
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

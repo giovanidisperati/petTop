@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Session;
 
 class UsuarioController extends Controller
 {
@@ -86,8 +87,11 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = User::find($id);
+        $usuario = User::findOrFail($id);
+
         $usuario->delete();
+
+        Session::flash('flash_message', 'Usuário deletado!');
 
         return view('home');
     }
