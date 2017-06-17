@@ -12,25 +12,23 @@
                 <div class="top-right links">
                     @if (Auth::check())
                         @if((Auth::user()->tipo)== 1)
-
+                        <?php
+                            $id = Auth::user()->id;
+                        ?>
                         <h3>Olá, Cliente {{ Auth::user()->name }} </h3>
-                        <a href="{{ url('/cadastroCliente') }}">Concluir Cadastro</a>
+                        <a href="{{ url('/usuario/'.$id.'/edit')}}">Editar Cadastro</a>
                         <a href="{{ url('/buscarClinicas')}}">Buscar Clínicas</a>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                        <form action="{{ url('UsuarioController@destroy') }}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                             <a href="{{ url('/usuario/'.$id)}}">Excluir Conta</a>
+                        </form>
+                       
 
                         @elseif((Auth::user()->tipo)== 0)
                         <h3>Olá, Clínica  {{ Auth::user()->name }} </h3>
                         <a href="{{ url('/clinica') }}">Concluir Cadastro</a>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                        @else
-                                        
-                           
+
+                        @else   
                         <a href="{{ url('/login') }}">Login</a>
                         <a href="{{ url('/register') }}">Registrar</a>
                     @endif
