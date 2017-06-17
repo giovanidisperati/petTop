@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Clinica;
+use DB;
 
 class ClinicasController extends Controller
 {
@@ -23,7 +25,7 @@ class ClinicasController extends Controller
      */
     public function create()
     {
-        //
+        return view('clinicaCadastro');
     }
 
     /**
@@ -34,7 +36,22 @@ class ClinicasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = auth()->id();
+        $clinica = new Clinica;
+        $clinica->id            = $id;
+        $clinica->fantasia      = $request->fantasia;
+        $clinica->razao_social  = $request->razao_social;
+        $clinica->cnpj          = $request->cnpj;
+        $clinica->endereco      = $request->endereco;
+        $clinica->numero        = $request->numero;
+        $clinica->bairro        = $request->bairro;
+        $clinica->cidade        = $request->cidade;
+        $clinica->estado        = $request->estado;
+        $clinica->transporte    = $request->transporte;
+        $clinica->especialidades = $request->especialidades;
+        $clinica->tratamentos   = $request->tratamentos;
+        $clinica->exames        = $request->exames;
+        $clinica->save();
     }
 
     /**

@@ -17,9 +17,9 @@ class clinicas extends Migration
             $table->increments('id');
             $table->string('fantasia');
             $table->string('razao_social');
-            $table->tinyInteger('cnpj');
+            $table->string('cnpj');
             $table->string('endereco');
-            $table->tinyInteger('numero');
+            $table->string('numero');
             $table->string('bairro');
             $table->string('cidade');
             $table->string('estado');

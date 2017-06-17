@@ -1,5 +1,5 @@
 
-@section('content')
+
 @if (Route::has('login'))
          @if (Auth::check())
             @if((Auth::user()->tipo) ==0)
@@ -45,53 +45,53 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="cnpj">CNPJ</label>
-                                        <input type="text" class="form-control required" id="cnpj" name="cnpj" placeholder="CNPJ">
+                                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="endereco">Endereço</label>
-                                        <input type="text" class="form-control required" id="endereco" name="endereco" placeholder="Endereço">
+                                        <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Endereço">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="numero">Número</label>
-                                        <input type="text" class="form-control required" id="numero" name="numero" placeholder="Número">
+                                        <input type="text" class="form-control" id="numero" name="numero" placeholder="Número">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="bairro">Bairro</label>
-                                        <input type="text" class="form-control required" id="bairro" name="bairro" placeholder="Bairro">
+                                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="cidade">Cidade</label>
-                                        <input type="text" class="form-control required" id="cidade" name="cidade" placeholder="Cidade">
+                                        <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="estado">Estado</label>
-                                        <input type="text" class="form-control required" id="estado" name="estado" placeholder="Estado">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="especialidades">Especialidades</label>
-                                        <select name="especialidades">
-                                            <option value="geral">Geral</option>
-                                            <option value="ortopedia">Ortopedia</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="estado" name="estado" placeholder="Estado">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="transporte">Transporte</label>
-                                        <input type="radio" name="transporte" value="0">Não
-                                        <input type="radio" name="transporte" value="1">Sim
+                                        <input type="radio" id="transporte" name="transporte" value="0">Não
+                                        <input type="radio" id="transporte" name="transporte" value="1">Sim
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="especialidades">Especialidades</label>
+                                        <select name="especialidades" id="especialidades">
+                                            <option value="geral">Geral</option>
+                                            <option value="ortopedia">Ortopedia</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -122,41 +122,16 @@
     @endif
 </div>
 @endif     
-@endsection
+
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
 </script>
 
 
     <script>
-        $(function () {
-           $("#checkBox").click(function () {
-                $('#textBox').attr("disabled", $(this).is(":checked"));
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    $('#addAssunto').append('<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto Novo">');
-                }else{
-                    $('#addAssunto').find('#assunto').remove();
-                }
-           });
-        });
 
         $(function () {
-           $("#clickQuorum").click(function () {
-                $('#textBox').attr("disabled", $(this).is(":checked"));
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    $('#addQuorum').append('<input type="number" class="form-control" id="quorum" name="quorum" placeholder="Quorum Novo">');
-                }else{
-                    $('#addQuorum').find('#quorum').remove();
-                }
-           });
-        });
-
-        $(function () {
-            $('#icheck').iCheck();
-            $('#datepicker').datepicker();
             
-            $('#formReunioes').on('submit', function(e){
+            $('#formClinicas').on('submit', function(e){
                 e.preventDefault();
                 $(".required").parent('.form-group').removeClass('has-error');
                 $(".required").each(function(){
@@ -169,30 +144,33 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-                
-                var reunioes = {
+            
+                var clinicas = {
                     _token: "{{ csrf_token() }}",
-                    assunto: $("#assunto").val(),
-                    tema: $("#tema").val(),
-                    pautas: $("#pautas").val(),
-                    descricao: $("#descricao").val(),
-                    data_hora: $("#datepicker").val(),
-                    tipo_reuniao: $("#tipo_reuniao").val(),
-                    quorum: $("#quorum").val(),
-                    segunda_chamada: $("#segunda_chamada:checked").val(),
-                    participantes: $("#participantes").val(),
+                    fantasia: $("#nome_fantasia").val(),
+                    razao_social: $("#razao_social").val(),
+                    cnpj: $("#cnpj").val(),
+                    endereco: $("#endereco").val(),
+                    numero: $("#numero").val(),
+                    bairro: $("#bairro").val(),
+                    cidade: $("#cidade").val(),
+                    estado: $("#estado").val(),
+                    especialidades: $("#especialidades").val(),
+                    transporte: $("#transporte:checked").val(),
+                    tratamentos: $("#tratamentos").val(),
+                    exames: $("#exames").val(),
                 }
 
                 $.ajax({
                     type: "POST",
-                    url: "/reunioes",
-                    data:  JSON.stringify(reunioes) , 
+                    url: "/clinica",
+                    data:  JSON.stringify(clinicas) , 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
-                        
+                        console.log('foi');
                     },
                     error: function(response){
-                        
+                        console.log('não foi');
                     }
                 });
             });
