@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
+use DB;
 
 class UsuarioController extends Controller
 {
@@ -37,6 +38,12 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function listarClinicas()
+    {
+       
+        return view ('listarClinicas', ['clinicas' => $clinicas]);
     }
 
     /**
