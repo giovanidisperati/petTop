@@ -25,7 +25,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view('bye');
     }
 
     /**
@@ -47,7 +47,8 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuario = User::find($id);
+        return view('usuario.show', ['usuario' => $usuario]);
     }
 
     /**
@@ -89,7 +90,6 @@ class UsuarioController extends Controller
     {
         $usuario = User::find($id);
         $usuario->delete();
-        Session::flash('flash_message', 'Usuário deletado!');
-        return view('register');
+        return view('/bye');
     }
 }

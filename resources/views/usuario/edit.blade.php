@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+@if (Route::has('login'))
+         @if (Auth::check())
+            @if((Auth::user()->tipo) ==1)
+
+            
+<div class="container">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -33,9 +39,20 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                    <a href="{{ url('/home') }}">Voltar</a>                
+                </div>    
             </div>
         </div>
     </div>
+</div>
+
+            
+        @else
+        <a href="{{ url('/login') }}">Login</a>
+        <a href="{{ url('/register') }}">Registrar</a>
+        @endif
+    @endif
+</div>
+@endif     
 </div>
 @endsection

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Clinica;
+use App\User;
 use DB;
+use Session;
+use Auth;
+
 
 class ClinicasController extends Controller
 {
@@ -37,8 +41,10 @@ class ClinicasController extends Controller
     public function store(Request $request)
     {
         $id = auth()->id();
+        $nome = Auth::user()->name;
         $clinica = new Clinica;
         $clinica->id            = $id;
+        $clinica->nome          = $nome;
         $clinica->fantasia      = $request->fantasia;
         $clinica->razao_social  = $request->razao_social;
         $clinica->cnpj          = $request->cnpj;
@@ -48,10 +54,11 @@ class ClinicasController extends Controller
         $clinica->cidade        = $request->cidade;
         $clinica->estado        = $request->estado;
         $clinica->transporte    = $request->transporte;
-        $clinica->especialidades = $request->especialidades;
-        $clinica->tratamentos   = $request->tratamentos;
-        $clinica->exames        = $request->exames;
+        $clinica->especialidade = $request->especialidade;
+        $clinica->tratamento   = $request->tratamento;
         $clinica->save();
+
+        return view('home');
     }
 
     /**
@@ -62,7 +69,8 @@ class ClinicasController extends Controller
      */
     public function show($id)
     {
-        //
+        $clinica = Clinica::find($id);
+        return view('clinicaView', ['clinica' => $clinica]);
     }
 
     /**
@@ -73,7 +81,12 @@ class ClinicasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $clinica = Clinica::find($id);
+        $usuario = User::find($id);
+        return view('clinicaCadastro', [
+            'clinica' => $clinica, 
+            'usuario' => $usuario
+        ]);
     }
 
     /**
@@ -85,7 +98,21 @@ class ClinicasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $clinica = Clinica::find($id);
+        $clinica->nome          = $request->nome;
+        $clinica->fantasia      = $request->fantasia;
+        $clinica->razao_social  = $request->razao_social;
+        $clinica->cnpj          = $request->cnpj;
+        $clinica->endereco      = $request->endereco;
+        $clinica->numero        = $request->numero;
+        $clinica->bairro        = $request->bairro;
+        $clinica->cidade        = $request->cidade;
+        $clinica->estado        = $request->estado;
+        $clinica->transporte    = $request->transporte;
+        $clinica->especialidade = $request->especialidade;
+        $clinica->tratamento   = $request->tratamento;
+        $clinica->save();
+        return view('home');
     }
 
     /**
@@ -96,6 +123,10 @@ class ClinicasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $clinica = Clinica::find($id);
+        $user = User::find($id);
+        $user->delete();
+        $clinica->delete();
+        return view('/bye');
     }
 }

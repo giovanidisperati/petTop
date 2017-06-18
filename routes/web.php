@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('clinica', 'ClinicasController');
 Route::resource('usuario', 'UsuarioController');
+Route::get('/bye', 'UsuarioController@create');

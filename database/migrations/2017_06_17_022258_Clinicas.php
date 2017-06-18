@@ -15,6 +15,7 @@ class clinicas extends Migration
     {
         Schema::create('clinicas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nome');
             $table->string('fantasia');
             $table->string('razao_social');
             $table->string('cnpj');
@@ -23,10 +24,9 @@ class clinicas extends Migration
             $table->string('bairro');
             $table->string('cidade');
             $table->string('estado');
-            $table->string('especialidades');
+            $table->string('especialidade');
             $table->tinyInteger('transporte');
-            $table->string('tratamentos');
-            $table->string('exames');
+            $table->string('tratamento');
             $table->timestamps();
         });
     }

@@ -10,28 +10,45 @@
                 <div class="panel-body">
                     
                 <div class="top-right links">
+                <div class="form-group">
                     @if (Auth::check())
+                        <h3>Olá, {{ Auth::user()->name }} </h3>
                         @if((Auth::user()->tipo)== 1)
                         <?php
                             $id = Auth::user()->id;
                         ?>
-                        <h3>Olá, Cliente {{ Auth::user()->name }} </h3>
-                        <a href="{{ url('/usuario/'.$id.'/edit')}}">Editar Cadastro</a>
-                        <a href="{{ url('/buscarClinicas')}}">Buscar Clínicas</a>
-                        {{ Form::open(array('url' => 'usuario/' . $id, 'class' => 'pull-right')) }}
+
+                        <a href="{{ url('/usuario/'.$id) }}" class="btn btn-warning">Visualizar Cadastro</a>
+                        <br><br>
+                        <a href="{{ url('/usuario/'.$id.'/edit')}}" class="btn btn-success">Editar Cadastro</a>
+                        <br><br>
+                        <a href="{{ url('/listarClinicas')}}" class="btn btn-info">Listar Clínicas</a>
+                        <br><br>
+                        {{ Form::open(array('url' => 'usuario/' . $id)) }}
                             {{ Form::hidden('_method', 'DELETE') }}
-                            {{ Form::submit('Deleter conta', array('class' => 'btn btn-warning')) }}
+                            {{ Form::submit('Deletar conta', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
                        
 
                         @elseif((Auth::user()->tipo)== 0)
-                        <h3>Olá, Clínica  {{ Auth::user()->name }} </h3>
-                        <a href="{{ url('/clinica') }}">Concluir Cadastro</a>
+                        <?php
+                            $id = Auth::user()->id;
+                        ?>
+
+                        <a href="{{ url('/clinica/'.$id.'/edit') }}" class="btn btn-success">Cadastro</a>
+                        <br><br>
+                        <a href="{{ url('/clinica/'.$id) }}" class="btn btn-info">Visualizar Cadastro</a>
+                        <br><br>
+                        {{ Form::open(array('url' => 'clinica/' . $id)) }}
+                            {{ Form::hidden('_method', 'DELETE') }}
+                            {{ Form::submit('Deletar conta', array('class' => 'btn btn-danger')) }}
+                        {{ Form::close() }}
 
                         @else   
                         <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Registrar</a>
+                        <a href="{{ url('/register') }}">Cadastro</a>
                     @endif
+                    </div>
                 </div>
             @endif   
             @endif  
