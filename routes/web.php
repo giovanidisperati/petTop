@@ -22,3 +22,4 @@ Route::resource('clinica', 'ClinicasController');
 Route::resource('usuario', 'UsuarioController');
 Route::get('/listarClinicas', 'UsuarioController@listarClinicas');
 Route::get('/listarClinicas', 'HomeController@listarClinicas');
+Route::get('/busca', 'SearchController@busca');

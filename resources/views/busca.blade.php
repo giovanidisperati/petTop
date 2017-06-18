@@ -65,30 +65,17 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
+        <div>
 
             <div class="content">
-                <div class="title m-b-md">
-                    petTop
+                <div>
+                    <h3>RESULTADOS DA BUSCA</h3>
                 </div>
 
-                <div class="links">
-                    <a href="{{ url('/listarClinicas')}}">LISTAGEM DE CLÍNICAS</a>
-                </div>
+                @foreach($dados as $d)
+                    <a href="{{ url('/listarClinicas/'.$d->id)}}"><h2>{{$d->fantasia}}</h2></a>
+                @endforeach
 
-                <form action="{{ action('SearchController@busca') }}"method="get">
-                <input class="form-control" name="search" type="text" /> 
-                <button class="btn btn-flat btn-primary" type="submit">Buscar</button>
             </form>
             </div>
         </div>
