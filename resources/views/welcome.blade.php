@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/listarClinicas')}}">LISTAGEM DE CLÍNICAS</a>
+                    <h3>BUSCAR CLÍNICAS</h3>
                 </div>
 
                 <form action="{{ action('SearchController@busca') }}"method="get">

@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
     <head>
@@ -73,11 +75,16 @@
                 </div>
 
                 @foreach($dados as $d)
-                    <a href="{{ url('/listarClinicas/'.$d->id)}}"><h2>{{$d->fantasia}}</h2></a>
+                <div>
+                    <h3>{{$d->fantasia}}</h3>
+                    <p>{{$d->endereco}}, {{$d->numero}} {{$d->bairro}} {{$d->cidade}}-{{$d->estado}}</p>
+                    <p>{{$d->tratamento}}</p>
+                </div>
                 @endforeach
 
-            </form>
+            <a href="{{ url('/') }}">Voltar</a>  
             </div>
+
         </div>
     </body>
 </html>

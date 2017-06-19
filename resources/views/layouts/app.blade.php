@@ -47,12 +47,20 @@
                             <li><a href="{{ route('register') }}">Cadastro</a></li>
                         @else
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="{{ url('/home') }}"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+
+                                    @if((Auth::user()->tipo)==1)
+
+                                    <a href="{{ url('/home') }}" >Home</a>
+                                    @else
+                                    <a href="{{ url('/home') }}" ">Home</a>
+                                    @endif
+                                    
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

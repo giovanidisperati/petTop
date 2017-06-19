@@ -15,48 +15,33 @@
                         <div class="form-group">
                     	
                         @foreach($clinicas as $clinica)
+                        <div class="table table-striped">
                         <table>
-                        
+                            <thead>
 	                        <tr>
-	                        	<th>Administrador</th>
-	                        	<td>{{$clinica->nome}}</td>
-	                        </tr>
-	                        <tr>
-	                        	<th>Nome Fantasia</th>
-	                        	<td>{{$clinica->fantasia}}</td>	                        
-	                        </tr>
-                            <tr>
+	                        	<th>Admin</th>
+                                <th>Nome Fantasia</th>
                                 <th>Endereço</th>
-                                <td>{{$clinica->endereco}}</td>
-                            </tr>
-                            <tr>
-                                <th>Número</th>
-                                <td>{{$clinica->numero}}</td>
-                            </tr>
-                            <tr>
-                                <th>Bairro</th>
-                                <td>{{$clinica->bairro}}</td>
-                            </tr>
-                            <tr>
-                                <th>Cidade</th>
-                                <td>{{$clinica->cidade}}</td>
-                            </tr>
-                            <tr>
-                                <th>Estado</th>
-                                <td>{{$clinica->estado}}</td>
-                            </tr>
+	                        	
+	                        </tr>
+                            </thead>
+                            <tbody>
+	                        <tr>
+                                <td>{{$clinica->nome}}</td>
+	                        	<td>{{$clinica->fantasia}}</td>
+                                <td>{{$clinica->endereco}}, {{$clinica->numero}} {{$clinica->bairro}} {{$clinica->cidade}} - {{$clinica->estado}}</td>	                        
+	                        </tr>
+                            </tbody>
                             </table>
                             @endforeach
                             </div>
-                               </div>
-                       <a href="{{ url('/home') }}">Voltar</a>  
-                </div>
-                </div>
+                        </div>
+                    </div>
+                    </div>
+                    <a href="{{ url('/home') }}">Voltar</a>
+                </div>  
             </div>
         </div>
     </div>
-</div>
-</div>
-    
 </div>
 @endsection
