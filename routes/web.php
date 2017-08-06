@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('find');
 });
 
 Auth::routes();
@@ -23,3 +23,8 @@ Route::resource('usuario', 'UsuarioController');
 Route::get('/listarClinicas', 'UsuarioController@listarClinicas');
 Route::get('/listarClinicas', 'HomeController@listarClinicas');
 Route::get('/busca', 'SearchController@busca');
+Route::get('/base', 'SearchController@index');
+
+Route::get('/search', function () {
+    return view('search');
+});

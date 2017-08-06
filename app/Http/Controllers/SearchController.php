@@ -17,6 +17,8 @@ class SearchController extends Controller
         if ($query === 0){
         
             $dados = DB::table('clinicas')->get();
+
+            echo('Não foi possível encontrar nada nos registros');
         
         } elseif ($query > 0){
           
@@ -25,7 +27,9 @@ class SearchController extends Controller
         }
         return view('busca', ['dados' => $dados]);
     }
-
+    public function index(){
+        return view('base');
+    }
 }
 
     
