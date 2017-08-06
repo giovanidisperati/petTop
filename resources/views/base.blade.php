@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ config('app.locale') }}">
 
 <head>
 
@@ -26,6 +26,7 @@
 
     <!-- Theme CSS -->
     <link href="css/new-age.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -49,6 +50,7 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
+            @if (Route::has('login'))
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -62,6 +64,7 @@
                     </li>
                 </ul>
             </div>
+            @endif
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
@@ -162,6 +165,11 @@
         </div>
     </section>
 
+    <div id="app">
+
+
+        @yield('content')
+    </div>
     <footer>
         <div class="container">
             <p>&copy; 2017 PetTop. Todos os direitos reservados.</p>
@@ -179,6 +187,7 @@
 
     <!-- Theme JavaScript -->
     <script src="js/new-age.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
 </body>
 
