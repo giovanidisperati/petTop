@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('find');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -25,6 +21,6 @@ Route::get('/listarClinicas', 'HomeController@listarClinicas');
 Route::get('/busca', 'SearchController@busca');
 Route::get('/base', 'SearchController@index');
 
-Route::get('/search', function () {
+Route::get('/', function () {
     return view('search');
 });
