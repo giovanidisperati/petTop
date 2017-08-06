@@ -61,6 +61,12 @@
                 color: #fff !important;           
             }
         </style>
+        
+
+
+
+@section('content')
+        <div class="container">
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
@@ -70,13 +76,8 @@
                 <div class="links">
                     <h3 style="color: #fff;">BUSCAR CLÍNICAS</h3>
                 </div>
-
-                
             </div>
         </div>
-@section('content')
-    <body>
-        <div class="container">
             <div class="well well-sm">
                 <div class="form-group">
                     <div class="input-group input-group-md">
@@ -121,4 +122,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
 <script src="/js/app.js"></script>
-</html>
