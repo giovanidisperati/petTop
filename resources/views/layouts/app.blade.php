@@ -94,6 +94,3 @@
     <script src="js/new-age.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
-</body>
-
-</html>
