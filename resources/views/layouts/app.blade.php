@@ -46,7 +46,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">PetTop</a>
+                <a class="navbar-brand page-scroll" href="{{ url('/base') }}">PetTop</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,7 +60,7 @@
                         <a class="page-scroll" href="{{ url('/login') }}">Login</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="{{ url('/register') }}">Registrar</a>
+                        <a class="page-scroll" href="{{ url('/register') }}">Cadastro</a>
                     </li>
                 </ul>
             </div>
