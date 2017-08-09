@@ -86,7 +86,7 @@
                         </div>
                         <span class="input-group-btn">
                             
-                            <button class="btn btn-default" type="button" @click="search()" v-if="!loading">Search!</button>
+                            <button class="btn btn-default" type="button" @click="search()" v-if="!loading">Procurar!</button>
 
                             <button class="btn btn-default" type="button" disabled="disabled" v-if="loading">Searching...</button>
                         </span>

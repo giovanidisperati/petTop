@@ -60,6 +60,10 @@
                 margin-bottom: 30px;
                 color: #fff !important;           
             }
+            .bloco-pesquisar{
+                margin-top: -27%;
+                margin-bottom: 151px !important;
+            }
         </style>
         
 
@@ -78,17 +82,17 @@
                 </div>
             </div>
         </div>
-            <div class="well well-sm">
+            <div class="well well-sm bloco-pesquisar">
                 <div class="form-group">
                     <div class="input-group input-group-md">
                         <div class="icon-addon addon-md">
-                           <input type="text" placeholder="What are you looking for?" class="form-control" v-model="query">
+                           <input type="text" placeholder="O que procura?" class="form-control" v-model="query">
                         </div>
                         <span class="input-group-btn">
                             
-                            <button class="btn btn-default" type="button" @click="search()" v-if="!loading">Search!</button>
+                            <button class="btn btn-default" type="button" @click="search()" v-if="!loading">Procurar!!</button>
 
-                            <button class="btn btn-default" type="button" disabled="disabled" v-if="loading">Searching...</button>
+                            <button class="btn btn-default" type="button" disabled="disabled" v-if="loading">Procurando...</button>
                         </span>
                     </div>
                 </div>

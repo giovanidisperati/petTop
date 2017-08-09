@@ -1,17 +1,87 @@
-@extends('layouts.app')
+@extends('layouts.interno-edit')
+<style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
+                height: 100vh;
+                margin: 0;
+                background: url("../../img/bg-pattern.png"), #7b4397;
+                /* fallback for old browsers */
+                background: url("../../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
+                /* Chrome 10-25, Safari 5.1-6 */
+                background: url("../../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
+            }
 
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #fff !important;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+                color: #fff !important;           
+            }
+            .control-label{
+                color: #fff !important;
+            }
+       
+            .button-password{
+                font-size: 11px !important;
+            }
+            .container-clinica{
+                margin-left: 21%;
+                margin-right: 17%;
+            }
+
+        </style>
 @section('content')
 @if (Route::has('login'))
          @if (Auth::check())
             @if((Auth::user()->tipo) ==0)
 
             
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Cadastro de Clínica</div>
-                    <div class="panel-body">
+ <div class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="title m-b-md">
+                Cadastro da Clínica
+                </div>
+                <div class="container-clinica">
+                <div class="col-md-12" style="text-align: justify;color:white" >
                      @if(($clinica) != '')
                         {{ Form::model($clinica, array('route' => array('clinica.update', $clinica->id), 'method' => 'PUT')) }}
                         @else 
@@ -146,8 +216,13 @@
                                     </div>
                             </div>
                             <div class="box-footer">
+                                <div class="col-md-6">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
-                                <a href="{{ url('/home') }}">Voltar</a>       
+                                </div>
+                                <div class="col-md-6" align="right">
+                                <a href="{{ url('/home') }}"> <button type="submit" class="btn btn-primary">Voltar
+                                </button></a>       
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -155,6 +230,7 @@
             </div>
         </div>
     </div>
+
 
             
         @else
