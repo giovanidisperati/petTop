@@ -15,18 +15,21 @@ class clinicas extends Migration
     {
         Schema::create('clinicas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('fantasia');
-            $table->string('razao_social');
-            $table->string('cnpj');
-            $table->string('endereco');
-            $table->string('numero');
-            $table->string('bairro');
-            $table->string('cidade');
-            $table->string('estado');
-            $table->string('especialidade');
+            $table->string('nome',30);
+            $table->string('fantasia',50);
+            $table->string('razao_social',50);
+            $table->string('cnpj',20);
+            $table->string('cep',8);
+            $table->string('latitude',20);
+            $table->string('longitude',20);
+            $table->string('endereco',50);
+            $table->string('numero',5);
+            $table->string('bairro',20);
+            $table->string('cidade',20);
+            $table->string('estado',20);
+            $table->string('especialidade',200);
             $table->tinyInteger('transporte');
-            $table->string('tratamento');
+            $table->string('tratamento',200);
             $table->timestamps();
         });
     }

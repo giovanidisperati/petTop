@@ -79,6 +79,7 @@
 
                 <div class="links">
                     <h3 style="color: #fff;">BUSCAR CLÍNICAS</h3>
+                    <br>
                 </div>
             </div>
         </div>
@@ -94,6 +95,20 @@
 
                             <button class="btn btn-default" type="button" disabled="disabled" v-if="loading">Procurando...</button>
                         </span>
+                    </div>
+                </div>
+            </div>
+            <div class="well well-sm bloco-pesquisar">
+                <div class="form-group">
+                    <div class="input-group input-group-md">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <p id="demo">Buscar por localização atual:</p>
+                        </div>
+                        <div class="col-md-2">
+                            <a onclick="getLocation()"><button type="submit" class="btn btn-primary" >BUSCAR</button></a>
+                        </div> 
+                    </div>                      
                     </div>
                 </div>
             </div>
@@ -126,3 +141,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
 <script src="/js/app.js"></script>
+
+

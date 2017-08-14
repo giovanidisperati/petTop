@@ -67,6 +67,9 @@
                 margin-left: 21%;
                 margin-right: 17%;
             }
+            .buscar-cep{
+                margin-left: -16px;
+            }
 
         </style>
 @section('content')
@@ -74,7 +77,7 @@
          @if (Auth::check())
             @if((Auth::user()->tipo) ==0)
 
-            
+<br><br>         
  <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
@@ -130,6 +133,17 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="numero">CEP</label><br>
+                                            <div class="col-md-2">
+                                                <input type="text" class="form-control buscar-cep" id="cep" name="numero" value="">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button onclick="buscarCEP()" class="btn btn-primary">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="endereco">Endereço</label>
@@ -139,6 +153,9 @@
                                             @else
                                             <input type="text" class="form-control" id="endereco" name="endereco" value="{{$clinica->endereco}}">
                                             @endif
+
+                                            <input type="hidden" class="form-control" id="latitude" name="latitude" value="">
+                                            <input type="hidden" class="form-control" id="longitude" name="longitude" value="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -187,7 +204,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="transporte">Transporte</label>
+                                            <label for="transporte">Transporte</label><br>
                                             <input type="radio" id="transporte" name="transporte" value="0">Não
                                             <input type="radio" id="transporte" name="transporte" value="1">Sim
                                         </div>
@@ -230,7 +247,7 @@
             </div>
         </div>
     </div>
-
+<br><br>
 
             
         @else
@@ -242,3 +259,6 @@
 @endif     
 </div>
 @endsection
+
+<script src="/js/jquery.js"></script>
+<script src="/js/app.js"></script>

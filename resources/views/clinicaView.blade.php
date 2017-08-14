@@ -67,6 +67,9 @@
                 margin-left: 21%;
                 margin-right: 17%;
             }
+            .color-input{
+                color: #fff;
+            }
 
         </style>
 @section('content')
@@ -88,43 +91,43 @@
                         
                         <table>
                         
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Administrador</th>
 	                        	<td>{{$clinica->nome}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Nome Fantasia</th>
 	                        	<td>{{$clinica->fantasia}}</td>	                        
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Razão Social</th>
 	                        	<td>{{$clinica->razao_social}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>CNPJ</th>
 	                        	<td>{{$clinica->cnpj}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Endereço</th>
 	                        	<td>{{$clinica->endereco}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Número</th>
 	                        	<td>{{$clinica->numero}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Bairro</th>
 	                        	<td>{{$clinica->bairro}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Cidade</th>
 	                        	<td>{{$clinica->cidade}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Estado</th>
 								<td>{{$clinica->estado}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Transporte</th>
 	                        	@if(($clinica->transporte)==1)
 	                        	<td>Sim</td>
@@ -132,11 +135,11 @@
 	                        	<td>Não</td>
 	                        	@endif
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Especialidade</th>
 	                        	<td>{{$clinica->especialidade}}</td>
 	                        </tr>
-	                        <tr>
+	                        <tr class="color-input">
 	                        	<th>Tratamentos</th>
 	                        	<td>{{$clinica->tratamento}}</td>
 							</tr>
