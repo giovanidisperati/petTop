@@ -19,7 +19,7 @@ class clinicas extends Migration
             $table->string('fantasia',50);
             $table->string('razao_social',50);
             $table->string('cnpj',20);
-            $table->string('cep',8);
+            $table->string('cep',8)->nullable();
             $table->string('latitude',20);
             $table->string('longitude',20);
             $table->string('endereco',50);

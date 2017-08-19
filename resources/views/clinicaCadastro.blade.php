@@ -140,7 +140,7 @@
                                                 <input type="text" class="form-control buscar-cep" id="cep" name="numero" value="">
                                             </div>
                                             <div class="col-md-3">
-                                                <button onclick="buscarCEP()" class="btn btn-primary">Buscar</button>
+                                                <a onclick="buscarCEP()" class="btn btn-primary">Buscar</a>
                                             </div>
                                         </div>
                                     </div>

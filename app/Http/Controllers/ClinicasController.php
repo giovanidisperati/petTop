@@ -48,6 +48,9 @@ class ClinicasController extends Controller
         $clinica->fantasia      = $request->fantasia;
         $clinica->razao_social  = $request->razao_social;
         $clinica->cnpj          = $request->cnpj;
+        $clinica->cep           = $request->cep;
+        $clinica->latitude      = $request->latitude;
+        $clinica->longitude     = $request->longitude;
         $clinica->endereco      = $request->endereco;
         $clinica->numero        = $request->numero;
         $clinica->bairro        = $request->bairro;
