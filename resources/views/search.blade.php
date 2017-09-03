@@ -1,121 +1,45 @@
 @extends('layouts.app')
-        <!-- Fonts -->
-        
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-                background: url("../img/bg-pattern.png"), #7b4397;
-                /* fallback for old browsers */
-                background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
-                /* Chrome 10-25, Safari 5.1-6 */
-                background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #fff !important;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-                color: #fff !important;           
-            }
-            .bloco-pesquisar{
-                margin-top: -27%;
-                margin-bottom: 151px !important;
-            }
-        </style>
-        
-
-
-
 @section('content')
-        <div class="container">
-        <div class="flex-center position-ref full-height">
+    <br>
+        <div class="col-md-12">
             <div class="content">
                 <div class="title m-b-md">
                     PetTop
                 </div>
 
-                <div class="links">
-                    <h3 style="color: #fff;">BUSCAR CLÍNICAS</h3>
+                <div class="m-b-md">
+                    <h3>BUSCAR CLÍNICAS</h3>
                     <br>
                 </div>
             </div>
         </div>
-            <div class="well well-sm bloco-pesquisar">
-                <div class="form-group">
-                    <div class="input-group input-group-md">
-                        <div class="icon-addon addon-md">
-                           <input type="text" placeholder="O que procura?" class="form-control" v-model="query">
-                        </div>
-                        <span class="input-group-btn">
-                            
-                            <button class="btn btn-default" type="button" @click="search()" v-if="!loading">Procurar!!</button>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group input-group-md">
+                    <div class="icon-addon addon-md">
+                       <input type="text" placeholder="O que procura?" class="form-control input-pesquisar" v-model="query">
+                    </div>
+                    <span class="input-group-btn">
+                        
+                        <button class="btn btn-primary" type="button" @click="search()" v-if="!loading">Procurar</button>
 
-                            <button class="btn btn-default" type="button" disabled="disabled" v-if="loading">Procurando...</button>
-                        </span>
-                    </div>
+                        <button class="btn btn-default" type="button" disabled="disabled" v-if="loading">Procurando...</button>
+                    </span>
                 </div>
             </div>
-            <div class="well well-sm bloco-pesquisar">
+        </div>
+        <div class="col-md-6">
                 <div class="form-group">
-                    <div class="input-group input-group-md">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <p id="demo">Buscar por localização atual:</p>
-                        </div>
-                        <div class="col-md-2">
-                            <a onclick="getLocation()"><button type="submit" class="btn btn-primary" >BUSCAR</button></a>
-                        </div> 
-                    </div>                      
-                    </div>
+                    <a onclick="getLocation()"><button type="submit" class="btn btn-primary" >BUSCAR por localização</button></a>                    
                 </div>
-            </div>
+        </div>
+         <div class="col-md-12">
             <div class="alert alert-danger" role="alert" v-if="error">
                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                 @{{ error }}
             </div>
+        </div>
+        <div class="col-md-12">
             <div id="clinicas" class="row list-group">
                 <div class="item col-xs-4 col-lg-4" v-for="clinica in clinicas">
                     <div class="thumbnail">
@@ -136,10 +60,10 @@
                 </div>
             </div>
         </div>
-    </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
 <script src="/js/app.js"></script>
+@endsection
 
 

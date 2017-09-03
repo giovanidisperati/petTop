@@ -1,162 +1,95 @@
 @extends('layouts.app')
- <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-                background: url("../img/bg-pattern.png"), #7b4397;
-                /* fallback for old browsers */
-                background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
-                /* Chrome 10-25, Safari 5.1-6 */
-                background: url("../img/bg-pattern.png"), linear-gradient(to left, #7b4397, #dc2430);
-            }
+@section('content')
+<br>
+<div class="col-md-12">
+    <div class="content">
+        <div class="title m-b-md">
+            Cadastro
+        </div>
+    </div>
+</div>
+<br>
+ <div class="flex-center position-ref full-height">
+        <form class="form-horizontal form-login" id="register" role="form" method="POST" action="{{ route('register') }}">
+        {{ csrf_field() }}
 
-            .full-height {
-                height: 100vh;
-            }
+        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+            <label for="name" class="col-md-4 control-label m-b-md">Nome</label>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+            <div class="col-md-4">
+                <input id="name" type="text" class="form-control" onkeypress="return txtBoxFormat(event);" minlength="3" name="name" value="{{ old('name') }}" required autofocus>
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #fff !important;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-                color: #fff !important;           
-            }
-            .control-label{
-                color: #fff !important;
-            }
-            .form-login{
-                width: 539px;
-            }
-            .button-password{
-                font-size: 11px !important;
-            }
-            .color-input{
-                color: #fff;
-            }
-
-        </style>
-         <div class="flex-center position-ref full-height">
-                    <div class="content">
-                        <div class="title m-b-md">
-                            Cadastro
-                        </div>
-
-                        <form class="form-horizontal form-login" id="register" role="form" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nome</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" onkeypress="return txtBoxFormat(event);" minlength="3" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong><?php echo('Insira um nome');?></strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                @if ($errors->has('name'))
+                    <span class="help-block">
+                        <strong><?php echo('Insira um nome');?></strong>
+                    </span>
+                @endif
+            </div>
+        </div>
 
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail</label>
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+            <label for="email" class="col-md-4 control-label m-b-md">E-Mail</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control required" name="email" value="{{ old('email') }}" required>
+            <div class="col-md-4">
+                <input id="email" type="email" class="form-control required" name="email" value="{{ old('email') }}" required>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong><?php echo "Este endereço de email não é válido"; ?></strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong><?php echo "Este endereço de email não é válido"; ?></strong>
+                    </span>
+                @endif
+            </div>
+        </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Senha</label>
+        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+            <label for="password" class="col-md-4 control-label m-b-md">Senha</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+            <div class="col-md-4">
+                <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong><?php echo "A senha deve ter 6 digitos"; ?></strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong><?php echo "A senha deve ter 6 digitos"; ?></strong>
+                    </span>
+                @endif
+            </div>
+        </div>
 
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirmar senha</label>
+        <div class="form-group">
+            <label for="password-confirm" class="col-md-4 control-label m-b-md">Confirmar senha</label>
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
+            <div class="col-md-4">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+            </div>
+        </div>
 
-                        <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
-                            <label for="tipo" class="col-md-4 control-label">Tipo</label>
+        <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
+            <label for="tipo" class="col-md-4 col-xs-4 control-label m-b-md">Tipo</label>
 
-                            <div class="col-md-6 color-input">
-                                <input id="tipo" type="radio" name="tipo" value="0">Clínica
-                                <input id="tipo" type="radio" name="tipo" value="1">Usuário
+            <div class="col-md-4 col-xs-4 color-input m-b-md" align="center">
+                <input id="tipo" type="radio" name="tipo" value="0"> Clínica
+                <input id="tipo" type="radio" name="tipo" value="1"> Usuário
 
-                            @if ($errors->has('tipo'))
-                                    <span class="help-block">
-                                        <strong><?php echo "Selecione um tipo"; ?></strong>
-                                    </span>
-                                @endif
+            @if ($errors->has('tipo'))
+                    <span class="help-block">
+                        <strong><?php echo "Selecione um tipo"; ?></strong>
+                    </span>
+                @endif
 
 
-                            </div>
-                        </div>
+            </div>
+        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Cadastrar
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    </div>
-                </div>
+        <div class="form-group">
+            <div class="col-md-6" align="right">
+                <button type="submit" class="btn btn-primary">
+                    Cadastrar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 <script>
     
     function txtBoxFormat(evtKeyPress) {
@@ -180,3 +113,4 @@
 
 
 </script>
+@endsection

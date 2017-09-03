@@ -1,3 +1,9 @@
+<style type="text/css">
+    .icone{
+      color: #fff;
+    font-size: 1.5em;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 
@@ -44,7 +50,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars icone"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="{{ url('/base') }}">PetTop</a>
             </div>
@@ -177,16 +183,13 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="jquery/jquery.min.js"></script>
-
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Theme JavaScript -->
-    <script src="js/new-age.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
 </body>

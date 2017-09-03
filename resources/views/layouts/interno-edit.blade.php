@@ -20,12 +20,13 @@
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="../device-mockups/device-mockups.min.css">
+    <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="../../device-mockups/device-mockups.min.css">
 
     <!-- Theme CSS -->
     <link href="../../css/new-age.min.css" rel="stylesheet">
+    <link href="../../css/layout-cad.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,13 +39,13 @@
 </head>
 
 <body id="page-top">
-
-     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+<div class="container">
+     <nav id="mainNav" class="navbar">
+        
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle navigation</span><i class="fa fa-bars icone"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="{{ url('/base') }}">PetTop</a>
             </div>
@@ -66,23 +67,23 @@
             </div>
             @endif
             <!-- /.navbar-collapse -->
-        </div>
         <!-- /.container-fluid -->
     </nav>
-
-    <div id="app">
-
-
+</div>
+<br>
+<div class="container">
+    <div class="col-md-12">
         @yield('content')
     </div>
-    <footer>
-        <div class="container">
-            <p>&copy; 2017 PetTop. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+</div>
+</body>
+    <div class="footer" align="center">
+        &copy; 2017 PetTop. Todos os direitos reservados.
+    </div>
+</html>
 
     <!-- jQuery -->
-    <script src="../../jquery/jquery.min.js"></script>
+    <script src="../../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../../js/bootstrap.min.js"></script>
@@ -90,7 +91,7 @@
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="../../js/new-age.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/js/app.js"></script>
+
 
