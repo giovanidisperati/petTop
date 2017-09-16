@@ -115,7 +115,7 @@ class ClinicasController extends Controller
         $clinica->especialidade = $request->especialidade;
         $clinica->tratamento   = $request->tratamento;
         $clinica->save();
-        return view('home');
+        return view('clinicaView', ['clinica' => $clinica]);
     }
 
     /**
@@ -130,6 +130,6 @@ class ClinicasController extends Controller
         $user = User::find($id);
         $user->delete();
         $clinica->delete();
-        return view('/bye');
+        return view('/search');
     }
 }
