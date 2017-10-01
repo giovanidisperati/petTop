@@ -19,6 +19,9 @@
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
+    <!-- VUE Js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
+    
     <!-- Plugin CSS -->
     <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../simple-line-icons/css/simple-line-icons.css">
