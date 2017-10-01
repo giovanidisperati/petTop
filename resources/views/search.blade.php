@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('content')
+<style>
+      #map {
+        width: 550px;
+        height: 400px;
+        background-color: grey;
+      }
+      .exibicaoMap{
+        display: none;
+      }
+    </style>
     <br>
         <div class="col-md-12">
             <div class="content">
@@ -30,8 +40,12 @@
         </div>
         <div class="col-md-6">
                 <div class="form-group">
-                    <a onclick="getLocation()"><button type="submit" class="btn btn-primary" >BUSCAR por localização</button></a>                    
+                    <a onclick="localizarUsuario()"><button type="submit" class="btn btn-primary" >BUSCAR por localização</button></a>                   
                 </div>
+        </div>
+        <div class="col-md-12" align="center">
+            <br></br>
+            <div id="map" align="center" class="exibicaoMap"></div> 
         </div>
          <div class="col-md-12">
             <div class="alert alert-danger" role="alert" v-if="error">
@@ -63,7 +77,37 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
-<script src="/js/app.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6hQKKirRMIdtEVScTNXAyInehH_4s4kA&callback=initMap"></script>
+
+<script type="text/javascript">
+ function localizarUsuario(){
+        if (window.navigator && window.navigator.geolocation) {
+         var geolocation = window.navigator.geolocation;
+         geolocation.getCurrentPosition(sucesso, erro);
+        } else {
+           alert('Geolocalização não suportada em seu navegador.')
+        }
+        function sucesso(posicao){
+          console.log(posicao);
+          var latitude = posicao.coords.latitude;
+          var longitude = posicao.coords.longitude;
+          var uluru = {lat: latitude, lng: longitude};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+           $("#map").removeClass("exibicaoMap");
+
+        }
+        function erro(error){
+          console.log(error)
+        }
+      }
+</script>
 @endsection
 
 

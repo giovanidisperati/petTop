@@ -1,15 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Clinica;
 use App\User;
 use DB;
 use Session;
 use Auth;
-
-
 class ClinicasController extends Controller
 {
     /**
@@ -21,7 +17,6 @@ class ClinicasController extends Controller
     {
         return view('clinicaCadastro');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -31,7 +26,6 @@ class ClinicasController extends Controller
     {
         return view('clinicaCadastro');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -60,10 +54,8 @@ class ClinicasController extends Controller
         $clinica->especialidade = $request->especialidade;
         $clinica->tratamento   = $request->tratamento;
         $clinica->save();
-
         return view('home');
     }
-
     /**
      * Display the specified resource.
      *
@@ -75,7 +67,6 @@ class ClinicasController extends Controller
         $clinica = Clinica::find($id);
         return view('clinicaView', ['clinica' => $clinica]);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -91,7 +82,6 @@ class ClinicasController extends Controller
             'usuario' => $usuario
         ]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -115,9 +105,8 @@ class ClinicasController extends Controller
         $clinica->especialidade = $request->especialidade;
         $clinica->tratamento   = $request->tratamento;
         $clinica->save();
-        return view('home');
+        return view('clinicaView', ['clinica' => $clinica]);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -130,6 +119,6 @@ class ClinicasController extends Controller
         $user = User::find($id);
         $user->delete();
         $clinica->delete();
-        return view('/bye');
+        return view('/search');
     }
 }
