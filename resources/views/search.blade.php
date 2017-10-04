@@ -10,6 +10,11 @@
         display: none;
       }
     </style>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <link href="/maps/css/main.css" rel="stylesheet" />
+    <script src="/maps/js/gmaps.js" type="text/javascript"></script>
+    <script src="/maps/js/markers.js" type="text/javascript"></script>    
     <br>
         <div class="col-md-12">
             <div class="content">
@@ -23,6 +28,8 @@
                 </div>
             </div>
         </div>
+
+
         <div class="col-md-6">
             <div class="form-group">
                 <div class="input-group input-group-md">
@@ -37,6 +44,7 @@
                     </span>
                 </div>
             </div>
+
         </div>
         <div class="col-md-6">
                 <div class="form-group">
@@ -75,9 +83,10 @@
             </div>
         </div>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6hQKKirRMIdtEVScTNXAyInehH_4s4kA&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBITrhJtUevVJlAk6_z2L4eS8OiUvSWXlE&callback=initMap"></script>
 
 <script type="text/javascript">
  function localizarUsuario(){
@@ -101,8 +110,20 @@
             map: map
           });
            $("#map").removeClass("exibicaoMap");
-
+           
+            var cep = <?php echo(json_encode($clinica->cep)); ?>;
+            var nome = <?php echo(json_encode($clinica->fantasia)); ?>;
+            maps(cep, nome);
         }
+        function maps(cep, nome) {
+            $(function(){
+               //Definir o centro do mapa [endereço + elm div]
+               initMap('-23.4396427, -46.5369074','map');
+               //Adicionar marcadores  [endereço + descricao html)
+               addMarker(cep,nome);
+              
+            });
+          }
         function erro(error){
           console.log(error)
         }

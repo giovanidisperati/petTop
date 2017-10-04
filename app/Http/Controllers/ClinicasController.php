@@ -82,6 +82,13 @@ class ClinicasController extends Controller
             'usuario' => $usuario
         ]);
     }
+
+    public function find()
+    {
+        $clinica = Clinica::all();
+        return view('search',[ 'clinica' => $clinica]);
+     
+    }
     /**
      * Update the specified resource in storage.
      *

@@ -66,7 +66,7 @@
         <div class="col-md-10">
             <div class="form-group">
                
-                    <button onclick="buscarCEP()" class="btn btn-primary button-cel">Buscar</button>
+                    <a onclick="buscarCEP()" class="btn btn-primary button-cel">Buscar</a>
                 
             </div>
         </div>
@@ -79,9 +79,6 @@
                 @else
                 <input type="text" class="form-control" id="endereco" name="endereco" value="{{$clinica->endereco}}">
                 @endif
-
-                <input type="hidden" class="form-control" id="latitude" name="latitude" value="">
-                <input type="hidden" class="form-control" id="longitude" name="longitude" value="">
             </div>
         </div>
         <div class="col-md-6">

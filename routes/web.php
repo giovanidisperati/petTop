@@ -19,6 +19,7 @@ Route::resource('usuario', 'UsuarioController');
 Route::get('/listarClinicas', 'UsuarioController@listarClinicas');
 Route::get('/listarClinicas', 'HomeController@listarClinicas');
 Route::get('/busca', 'SearchController@busca');
+Route::get('/search', 'ClinicasController@find');
 
 Route::get('/', function () {
     return view('search');

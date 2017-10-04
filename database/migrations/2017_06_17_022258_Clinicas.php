@@ -20,8 +20,8 @@ class clinicas extends Migration
             $table->string('razao_social',50);
             $table->string('cnpj',20);
             $table->string('cep',8)->nullable();
-            $table->string('latitude',20);
-            $table->string('longitude',20);
+            $table->string('latitude',20)->nullable();
+            $table->string('longitude',20)->nullable();
             $table->string('endereco',50);
             $table->string('numero',5);
             $table->string('bairro',20);
