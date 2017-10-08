@@ -86,8 +86,23 @@ class ClinicasController extends Controller
     public function find()
     {
         $clinica = Clinica::all();
-        return view('search',[ 'clinica' => $clinica]);
+        $cont = $clinica->count();
+        return view('search', ['clinica' => $clinica,'cont'=> $cont]);
      
+    }
+
+    function mapa()
+    {
+        $clinica = Clinica::all();
+        
+        foreach ($clinica as $cli){                           
+            $cep[] = $cli->cep;
+            $name[] = $cli->fantasia;
+            $funcao[] = 'maps('.$cli->cep.',"'.$cli->fantasia.'");';
+        }
+        
+        return response()->json($cep);
+        
     }
     /**
      * Update the specified resource in storage.

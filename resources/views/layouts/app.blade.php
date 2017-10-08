@@ -27,6 +27,7 @@
     <!-- Theme CSS -->
     <link href="css/new-age.min.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" /> 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -91,4 +92,6 @@
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="js/markers.js" type="text/javascript"></script> 
+    <script src="/js/gmaps.js" type="text/javascript"></script>  
 

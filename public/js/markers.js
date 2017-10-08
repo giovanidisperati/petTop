@@ -2,6 +2,8 @@ var markers;
 var address;
 var lat;
 var lng;
+
+
 function initMapCep(cep,num,elm)
 {
     address = getAddr(cep,num);
@@ -62,7 +64,7 @@ function addMarker(address,html)
                 }
                 lat = latlng.lat();
                 lng = latlng.lng();
-                var icon = "icons/m2.png";
+                var icon = "img/m2.png";
                 map.addMarker({
                     lat: lat,
                     lng: lng,
@@ -89,7 +91,7 @@ function addMarkerCep(cep,num,html)
                 }
                 lat = latlng.lat();
                 lng = latlng.lng();
-                 var icon = "icons/m1.png";
+                 var icon = "img/m1.png";
                 map.addMarker({
                     lat: lat,
                     lng: lng,

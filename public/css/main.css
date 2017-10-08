@@ -48,3 +48,10 @@ i{margin-top: 2px !important;}
     -moz-box-shadow: 0 0 10px #888 !important;
     box-shadow: 0 0 10px #888 !important;        
 }
+.footerMapa{
+    position: relative;
+}
+
+.footer{
+    margin-bottom: -1.5%;
+}

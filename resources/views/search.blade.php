@@ -10,11 +10,8 @@
         display: none;
       }
     </style>
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
-    <link href="/maps/css/main.css" rel="stylesheet" />
-    <script src="/maps/js/gmaps.js" type="text/javascript"></script>
-    <script src="/maps/js/markers.js" type="text/javascript"></script>    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCJI4r6BswBZ3b5enW70gWDpsW9khKfkug"></script>
     <br>
         <div class="col-md-12">
             <div class="content">
@@ -23,7 +20,7 @@
                 </div>
 
                 <div class="m-b-md">
-                    <h3>BUSCAR CLÍNICAS</h3>
+                    <h3>BUSCAR CLÍNICAS</h3>                
                     <br>
                 </div>
             </div>
@@ -86,10 +83,10 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.1/vue-resource.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBITrhJtUevVJlAk6_z2L4eS8OiUvSWXlE&callback=initMap"></script>
+
 
 <script type="text/javascript">
- function localizarUsuario(){
+ function localizarUsuario2(){
         if (window.navigator && window.navigator.geolocation) {
          var geolocation = window.navigator.geolocation;
          geolocation.getCurrentPosition(sucesso, erro);
@@ -109,25 +106,43 @@
             position: uluru,
             map: map
           });
-           $("#map").removeClass("exibicaoMap");
-           
-            var cep = <?php echo(json_encode($clinica->cep)); ?>;
-            var nome = <?php echo(json_encode($clinica->fantasia)); ?>;
-            maps(cep, nome);
+    
         }
-        function maps(cep, nome) {
-            $(function(){
-               //Definir o centro do mapa [endereço + elm div]
-               initMap('-23.4396427, -46.5369074','map');
-               //Adicionar marcadores  [endereço + descricao html)
-               addMarker(cep,nome);
-              
-            });
-          }
         function erro(error){
           console.log(error)
         }
       }
+
+function localizarUsuario(){
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        url : '/mapa',//url para acessar o arquivo
+        data: {acao: '1'},//parametros para a funcao
+        type : 'POST',//PROTOCOLO DE ENVIO PODE SER GET/POST
+        success : function(data){//DATA É O VALOR RETORNADO
+            var dadosMapa = data.map(function(cep) {         
+            cep;
+            maps(cep,'vai');
+            });
+        }           
+    })
+    $("#map").removeClass("exibicaoMap");
+    $(".footer").addClass("footerMapa");
+}      
+
+function maps(cep,nome){
+    $(function(){
+        //Definir o centro do mapa [endereço + elm div]
+        initMap('-23.6523944, -46.6662618','map');
+        //Adicionar marcadores  [endereço + descricao html)
+        addMarker(cep, nome);
+        
+    });
+}
 </script>
 @endsection
 
