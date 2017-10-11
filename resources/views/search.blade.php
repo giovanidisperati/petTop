@@ -86,7 +86,7 @@
 
 
 <script type="text/javascript">
- function localizarUsuario2(){
+ function localizarUsuario(){
         if (window.navigator && window.navigator.geolocation) {
          var geolocation = window.navigator.geolocation;
          geolocation.getCurrentPosition(sucesso, erro);
@@ -97,23 +97,21 @@
           console.log(posicao);
           var latitude = posicao.coords.latitude;
           var longitude = posicao.coords.longitude;
-          var uluru = {lat: latitude, lng: longitude};
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: uluru
-          });
-          var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-          });
-    
+          var uluru = {lat: latitude, lng: longitude}; 
+          var mapa = latitude+", "+longitude;
+          initMap(mapa,'map');
+          $("#map").removeClass("exibicaoMap");
+          localizarUsuario2();
         }
+
+        
         function erro(error){
           console.log(error)
         }
       }
 
-function localizarUsuario(){
+function localizarUsuario2(){
+    
     $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -137,7 +135,7 @@ function localizarUsuario(){
 function maps(cep,nome){
     $(function(){
         //Definir o centro do mapa [endereço + elm div]
-        initMap('-23.6523944, -46.6662618','map');
+        
         //Adicionar marcadores  [endereço + descricao html)
         addMarker(cep, nome);
         
