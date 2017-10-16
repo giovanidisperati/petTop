@@ -97,6 +97,6 @@ class UsuarioController extends Controller
     {
         $usuario = User::find($id);
         $usuario->delete();
-        return view('/search');
+        return view('/base');
     }
 }

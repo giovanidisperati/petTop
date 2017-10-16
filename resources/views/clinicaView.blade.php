@@ -39,6 +39,10 @@
 	                        	<td>{{$clinica->cnpj}}</td>
 	                        </tr>
 	                        <tr class="color-input">
+	                        	<th>CEP</th>
+	                        	<td>{{$clinica->cep}}</td>
+	                        </tr>
+	                        <tr class="color-input">
 	                        	<th>Endereço</th>
 	                        	<td>{{$clinica->endereco}}</td>
 	                        </tr>

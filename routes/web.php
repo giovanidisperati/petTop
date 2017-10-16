@@ -26,3 +26,7 @@ Route::get('/', function () {
     return view('search');
 });
 
+Route::get('/base', function () {
+    return view('base');
+});
+

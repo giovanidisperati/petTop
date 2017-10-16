@@ -59,8 +59,8 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
-                <label for="numero">CEP</label>
-                <input type="text" class="form-control" id="cep" name="numero" value="">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" name="cep" value="{{$clinica->cep}}">
             </div>
         </div>
         <div class="col-md-10">
@@ -128,8 +128,13 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="transporte">Transporte</label><br>
-                <input type="radio" id="transporte" name="transporte" value="0">Não
+                @if(($clinica->transporte) == 0)
+                <input type="radio" id="transporte" name="transporte" value="0" checked>Não
                 <input type="radio" id="transporte" name="transporte" value="1">Sim
+                @else(($clinica->transporte) == 1)
+                <input type="radio" id="transporte" name="transporte" value="0">Não
+                <input type="radio" id="transporte" name="transporte" value="1" checked>Sim
+                @endif
             </div>
         </div>
         <div class="col-md-12">
@@ -174,7 +179,7 @@
     @endif
 
 @endif     
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
 function FormataCnpj(campo, teclapres)
@@ -253,6 +258,5 @@ function validarCNPJ(cnpj) {
     return true;
     
 }
-
 </script>
 @endsection
