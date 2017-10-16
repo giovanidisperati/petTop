@@ -60,14 +60,16 @@
         <div class="col-md-3">
             <div class="form-group">
                 <label for="cep">CEP</label>
+                @if(($clinica) == '')
                 <input type="text" class="form-control" id="cep" name="cep" value="{{$clinica->cep}}">
+                @else
+                <input type="text" class="form-control" id="cep" name="cep">
+                @endif
             </div>
         </div>
         <div class="col-md-10">
             <div class="form-group">
-               
-                    <a onclick="buscarCEP()" class="btn btn-primary button-cel">Buscar</a>
-                
+                <a onclick="buscarCEP()" class="btn btn-primary button-cel">Buscar</a>               
             </div>
         </div>
         <div class="col-md-6">
@@ -128,12 +130,17 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="transporte">Transporte</label><br>
-                @if(($clinica->transporte) == 0)
-                <input type="radio" id="transporte" name="transporte" value="0" checked>Não
-                <input type="radio" id="transporte" name="transporte" value="1">Sim
-                @else(($clinica->transporte) == 1)
+                @if(($clinica) == '')
                 <input type="radio" id="transporte" name="transporte" value="0">Não
-                <input type="radio" id="transporte" name="transporte" value="1" checked>Sim
+                <input type="radio" id="transporte" name="transporte" value="1">Sim
+                @else
+                    @if(($clinica->transporte) == 0)
+                    <input type="radio" id="transporte" name="transporte" value="0" checked>Não
+                    <input type="radio" id="transporte" name="transporte" value="1">Sim
+                    @else(($clinica->transporte) == 1)
+                    <input type="radio" id="transporte" name="transporte" value="0">Não
+                    <input type="radio" id="transporte" name="transporte" value="1" checked>Sim
+                    @endif
                 @endif
             </div>
         </div>
@@ -179,32 +186,28 @@
     @endif
 
 @endif     
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script type="text/javascript">
-
 function FormataCnpj(campo, teclapres)
-			{
-				var tecla = teclapres.keyCode;
-				var vr = new String(campo.value);
-				vr = vr.replace(".", "");
-				vr = vr.replace("/", "");
-				vr = vr.replace("-", "");
-				tam = vr.length + 1;
-				if (tecla != 14)
-				{
-					if (tam == 3)
-						campo.value = vr.substr(0, 2) + '.';
-					if (tam == 6)
-						campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 5) + '.';
-					if (tam == 10)
-						campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(6, 3) + '/';
-					if (tam == 15)
-						campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(6, 3) + '/' + vr.substr(9, 4) + '-' + vr.substr(13, 2);
-				}
-			}
-
-
-
+            {
+                var tecla = teclapres.keyCode;
+                var vr = new String(campo.value);
+                vr = vr.replace(".", "");
+                vr = vr.replace("/", "");
+                vr = vr.replace("-", "");
+                tam = vr.length + 1;
+                if (tecla != 14)
+                {
+                    if (tam == 3)
+                        campo.value = vr.substr(0, 2) + '.';
+                    if (tam == 6)
+                        campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 5) + '.';
+                    if (tam == 10)
+                        campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(6, 3) + '/';
+                    if (tam == 15)
+                        campo.value = vr.substr(0, 2) + '.' + vr.substr(2, 3) + '.' + vr.substr(6, 3) + '/' + vr.substr(9, 4) + '-' + vr.substr(13, 2);
+                }
+            }
 function validarCNPJ(cnpj) {
  
     cnpj = cnpj.replace(/[^\d]+/g,'');

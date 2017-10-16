@@ -82,7 +82,6 @@ class ClinicasController extends Controller
             'usuario' => $usuario
         ]);
     }
-
     public function find()
     {
         $clinica = Clinica::all();
@@ -90,7 +89,6 @@ class ClinicasController extends Controller
         return view('search', ['clinica' => $clinica,'cont'=> $cont]);
      
     }
-
     function mapa()
     {
         $clinica = Clinica::all();
