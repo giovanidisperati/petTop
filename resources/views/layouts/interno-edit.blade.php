@@ -61,7 +61,7 @@
                         <a class="page-scroll" href="{{ url('/') }}">Buscar</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="{{ url('/login') }}">Login</a>
+                        <a class="page-scroll" href="{{ url('/login') }}">Logout</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="{{ url('/register') }}">Cadastro</a>

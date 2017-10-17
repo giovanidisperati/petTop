@@ -50,10 +50,10 @@
             <div class="form-group">
                 <label for="cnpj">CNPJ</label>
                 @if(($clinica) == '')
-                <input type="text" onkeyup="FormataCnpj(this,event)" onblur="if(!validarCNPJ(this.value)){alert('CNPJ Informado é inválido'); this.value='';}" maxlength="18"  class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ">
+                <input type="text" onkeyup="FormataCnpj(this,event)" onblur="if(!validarCNPJ(this.value)){swal({text: 'CNPJ inválido!',icon: 'error',button: 'Voltar',}); this.value='';}" maxlength="18"  class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ">
 
                 @else
-                <input type="text" onkeyup="FormataCnpj(this,event)" onblur="if(!validarCNPJ(this.value)){alert('CNPJ Informado é inválido'); this.value='';}" class="form-control" id="cnpj" name="cnpj" value="{{$clinica->cnpj}}">
+                <input type="text" onkeyup="FormataCnpj(this,event)" onblur="if(!validarCNPJ(this.value)){swal({text: 'CNPJ inválido!',icon: 'error',button: 'Voltar',}); this.value='';}" class="form-control" id="cnpj" name="cnpj" value="{{$clinica->cnpj}}">
                 @endif
             </div>
         </div>
@@ -61,9 +61,9 @@
             <div class="form-group">
                 <label for="cep">CEP</label>
                 @if(($clinica) == '')
-                <input type="text" class="form-control" id="cep" name="cep" value="{{$clinica->cep}}">
-                @else
                 <input type="text" class="form-control" id="cep" name="cep">
+                @else
+                <input type="text" class="form-control" id="cep" name="cep" value="{{$clinica->cep}}">
                 @endif
             </div>
         </div>
@@ -186,7 +186,7 @@
     @endif
 
 @endif     
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 function FormataCnpj(campo, teclapres)
             {
