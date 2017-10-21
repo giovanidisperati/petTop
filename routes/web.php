@@ -21,3 +21,7 @@ Route::post('/mapa', 'ClinicasController@mapa');
 Route::get('/', function () {
     return view('search');
 });
+
+Route::get('/chat', 'ChatController@index')->name('chat');
+Route::get('/chat/messages', 'ChatMessageController@index');
+Route::post('/chat/messages', 'ChatMessageController@store');
